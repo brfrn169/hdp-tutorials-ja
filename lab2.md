@@ -333,7 +333,7 @@ GROUP BY truckid;
 
 ## STEP 2.5: DEFINE TABLE SCHEMA
 
-これでトラックデータを洗練し、各トラックの平均mpgを得ました（avg_mileageテーブル）。次のタスクは、各ドライバーのリスクファクターを計算することです。これは合計マイル数/異常イベント数です。geolocationテーブルからイベント情報を取得できます。
+これでトラックデータを洗練し、各トラックの平均mpgを得ました（avg_mileageテーブル）。次のタスクは、各ドライバーのリスクファクターを計算することです。これは合計走行マイル数/異常イベント数です。geolocationテーブルからイベント情報を取得できます。
 
 ![Geolocation table ](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/geolocation_table_lab3.png)
 
