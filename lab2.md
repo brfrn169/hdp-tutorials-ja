@@ -300,15 +300,44 @@ CREATE TABLE truck_mileage STORED AS ORC AS SELECT truckid, driverid, rdate, mil
 
 ### 2.4.3 Use the Content Assist to build a query
 
-TODO
+1. SQLワークシートを作ります。
+
+2. SELECT文の入力を開始しますが、最初の2文字のみを入力してください。
+```
+SE
+```
+
+3. Ctrl+spaceを押すと、次のポップアップダイアログウィンドウが表示されます。
+![Lab2_24 ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/Lab2_24.png)
+※通知コンテンツアシストでは、「SE」で始まるオプションがいくつか表示されます。これらのショートカットは、多くのカスタムクエリコードを書くときに便利です。
+
+4. あなたの入力中にCtrl+spaceを使用して、次のクエリを入力して、どのようなコンテンツのアシストができるか、どのように動作するかを知ることができます。
+```
+SELECT truckid, avg(mpg) avgmpg FROM truck_mileage GROUP BY truckid;
+```
+![Lab2_28 ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/Lab2_28.png)
+
+5. "Save as …"ボタンをクリックして、クエリを"average mpg"として保存します。
+![Lab2_28 ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/Lab2_26.png)
+
+6. Hive User Viewの上部にあるタブの1つである"Saved Queries"のリストにクエリが表示されます。
+
+7. "average mpg"クエリを実行し、その結果を表示します。
 
 ### 2.4.4 Explore Explain Features of the Hive Query Editor
 
-TODO
+1. 次に、さまざまなExplain機能を調べて、クエリの実行をよりよく理解してみましょう.Text Explain、Visual Explain、およびTez Explainです。Explainボタンをクリックします。
+![Lab2_28 ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/Lab2_27.png)
+
+2. 以下のように、Tezジョブのフローが表示されます。
+![tez_job_result_lab2 ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/tez_job_result_lab2.png)
+
+3. Visual Explainを表示するには、右のタブのVisual Explainアイコンをクリックします。これは、Explainの結果を視覚的にわかりやすく表示する機能です。
+![tez_job_result_lab2 ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/visual_explain_dag_lab2.png)
 
 ### 2.4.5 Explore TEZ
 
-TODO
+...省略...
 
 ### 2.4.6 Create Table truck avg_mileage From Existing trucks_mileage Data
 
@@ -364,7 +393,7 @@ GROUP BY driverid;
 
 ### 2.5.3 Explore Hive Data Visualization
 
-TODO
+...省略...
 
 ## SUMMARY
 

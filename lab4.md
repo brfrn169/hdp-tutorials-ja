@@ -340,11 +340,11 @@ selectクエリを実行して、テーブルが正常に格納されたこと�
 
 ## FULL SPARK CODE REVIEW FOR LAB
 
-TODO
+...省略...
 
 ## APPENDIX A: RUN SPARK CODE IN THE SPARK INTERACTIVE SHELL
 
-TODO
+...省略...
 
 ## SUMMARY
 
