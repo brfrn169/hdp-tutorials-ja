@@ -40,11 +40,11 @@ Hiveとのやり取りを容易にするため、Hortonworks SandboxではAmbari
 
 それではAmbari Hive Viewを開き、その環境を体験してみましょう。9つの四角のボタンをクリックし、Hive Viewを選択します。
 
-![Hive  View](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/hive_view_lab2.png)
+![Hive  View](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/hive_view_lab2.png)
 
 Ambari Hive Viewは以下のようになります。
 
-![Hive  View](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/ambari_hive_user_view_concepts.png)
+![Hive  View](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/ambari_hive_user_view_concepts.png)
 
 それでは、Hive ViewのSQL編集機能を詳しく見ていきましょう。
 
@@ -86,29 +86,29 @@ Hiveのクエリを実行する前に、実行エンジンをTezとして設定�
 
 もう既にあなたはHive Viewに慣れているので、geolocationとtrucksのテーブルを作成し、それらのデータをロードしてみましょう。このセクションでは、Ambari Hive Viewを使用して2つのテーブルを作成する方法を学習します。Upload Tableタブには、入力ファイルの種類、ストレージオプション（ORCなど）、最初の行をヘッダーとして設定するなどの主要なオプションがあります。下記の図は、テーブルと次のステップから行うデータロードプロセスを視覚的に表しています。
 
-![Load Creation Process ](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/create_tables_architecture_lab2.png)
+![Load Creation Process ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/create_tables_architecture_lab2.png)
 
 ### 2.2.1 Create and load Trucks table For Staging Initial Load
 
 Ambari Hive Viewの`Upload Table`タブを選択します。次に、`Upload from HDFS`のラジオボタンを選択し、HDFSパス`/user/maria_dev/data/trucks.csv`を入力し、`Preview`ボタンをクリックします。
 
-![Upload Table ](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/upload_table_hdfs_path_lab2.png)
+![Upload Table ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/upload_table_hdfs_path_lab2.png)
 
 下記のようなダイアログが表示されます。最初の行には列の名前が含まれています。
 
-![Upload Table ](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/click_gear_button_lab2.png)
+![Upload Table ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/click_gear_button_lab2.png)
 
 幸いにも、`Upload Table`タブには、列名のヘッダーとして最初の行を指定する機能があります。上記の`File type`のプルダウンメニューの横にあるギアボタンを押して、ファイルタイプのカスタマイズウィンドウを開きます。 次に、`Is first row header?`チェックボックスをオンにし、closeボタンを押してください。
 
-![Upload Table ](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/first_row_header_lab2.png)
+![Upload Table ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/first_row_header_lab2.png)
 
 そうすると下記のようなダイアログボックスが表示され、列の名前としてヘッダー列の名前が表示されます。
 
-![Upload Table ](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/upload_table_lab2.png)
+![Upload Table ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/upload_table_lab2.png)
 
 それらの設定が完了したら、`Upload Table`ボタンを選択して、表の作成およびロード処理を開始します。
 
-![Upload Table ](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/upload_progress_lab2.png)
+![Upload Table ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/upload_progress_lab2.png)
 
 アップロードの進捗状況で何が起こっているのかを確認する前に、Hiveのファイル形式について学びましょう。
 
@@ -131,12 +131,12 @@ ORCを指定したcreate文は`Upload Table`タブの処理中でも、一時テ
 
 `trucks.csv`のテーブルは、最初に一時テーブルとして作成され、そこにデータがロードされます。 一時テーブルは、ORC形式でデータを作成およびロードするために使用されます。データが最終テーブルにロードされると、一時テーブルが削除されます。
 
-![Upload Table ](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/create_tables_architecture_lab2.png)
+![Upload Table ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/create_tables_architecture_lab2.png)
 注：一時テーブル名はランダムな文字セットであり、上の図の名前ではありません。
 
 `History`タブを選択し、`Upload Table`タブを使用した結果として実行された4つの内部ジョブをクリックすると、発行されたSQL文を確認できます。
 
-![Upload Table ](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/job_history_lab2.png)
+![Upload Table ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/job_history_lab2.png)
 
 ### 2.2.4 Create and Load Geolocation Table
 
@@ -156,7 +156,7 @@ ORCファイル形式のgeolocationテーブルを作成して読み込むため
 
 テーブルが正常に定義されたことを確認するには、Database Explorerで`refresh`アイコンをクリックします。 Databaseでdefault databaseをクリックしてテーブルの一覧を展開し、新しいテーブルが表示されます。
 
-![Verify Table ](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/select_data_trucks_lab2.png)
+![Verify Table ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/select_data_trucks_lab2.png)
 
 ### 2.2.7 Sample Data from the trucks table
 
@@ -175,7 +175,7 @@ ORCファイル形式のgeolocationテーブルを作成して読み込むため
 describe formatted geolocation;
 ```
 Resultsタブの一番下までスクロールすると、Storage Informationというラベルのセクションが表示されます。出力は次のようになります。
-![Output of formatted describe ](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/storage_information_lab2.png)
+![Output of formatted describe ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/storage_information_lab2.png)
 
 デフォルトでは、Hiveでテーブルを作成すると、テーブルと同じ名前のディレクトリがHDFSの`/apps/hive/warehouse`フォルダに作成されます。Ambari Files Viewを使用して、`/apps/hive/warehouse`フォルダに移動します。 `geolocation`と`trucks`ディレクトリの両方が表示されます。
 
@@ -185,7 +185,7 @@ Resultsタブの一番下までスクロールすると、Storage Informationと
 
 新しいワークシートのタブに`trucks sample data`が表示されていることに注意してください。ワークシート・タブをダブルクリックして、ラベルの名前を"sample truck data"に変更します。このワークシートを保存するには、そのボタンをクリックします。
 
-![Rename Worksheet ](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/save_truck_sample_data_lab2.png)
+![Rename Worksheet ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/save_truck_sample_data_lab2.png)
 
 ### 2.2.9 Command Line Approach: Populate Hive Table with Data
 
@@ -223,13 +223,13 @@ ShellからHiveクエリを実行した場合のパフォーマンスについ�
 
 DashboardタブをクリックしてAmbari DashboardからHiveの設定のページを探します。
 
-![Dashboard ](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/ambari_dashboard_lab2.png)
+![Dashboard ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/ambari_dashboard_lab2.png)
 
 ### 2.3.2 Become Familiar with Hive Settings
 
 `Hive page`へ行き、`Configs tab`を選択し、`Settings tab`をクリックします。
 
-![Hive Settings ](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/ambari_dashboard_explanation_lab2.png)
+![Hive Settings ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/ambari_dashboard_explanation_lab2.png)
 
 Hive pageをクリックすると、上記と同様のページが表示されます。
 
@@ -240,7 +240,7 @@ Hive pageをクリックすると、上記と同様のページが表示され�
 
 Optimization Settingsまでスクロールします。
 
-![Optimization Settings ](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/hive_optimization_lab2.png)
+![Optimization Settings ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/hive_optimization_lab2.png)
 
 上のスクリーンショットでは、
 
@@ -256,7 +256,7 @@ Optimization Settingsまでスクロールします。
 
 デフォルトでは、重要な設定が最初のページに表示されます。探している設定がこのページにない場合は、Advancedタブで追加の設定を見つけることができます。
 
-![Advanced Tab ](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/hive_vectorization_lab2.png)
+![Advanced Tab ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/hive_vectorization_lab2.png)
 
 たとえば、SQLのパフォーマンスを向上させたい場合は、新しいHiveベクタライズ機能を使用できます。 これらの設定は、次の手順で見つけて有効にすることができます。
 
@@ -278,7 +278,7 @@ vectorizationやその他のHiveのチューニングにあたって重要な設
 
 次に、Hive、Pig、およびZeppelinを使用して、geolocationテーブルとtrucksテーブルから派生データを分析します。ビズネスの目的は、運転者の疲労、過剰使用トラック、および様々な運送イベントがリスクに与える影響をより深く理解することです。これを達成するために、ソースデータにSQLを使用して一連の変換を適用し、PigまたはSparkを使用してリスクを計算します。 データ視覚化に関する最後のラボでは、Zeppelinを使用して一連のチャートを生成し、リスクをより深く理解します。
 
-![Analyze the Tracks Data ](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/Lab2_211.png)
+![Analyze the Tracks Data ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/Lab2_211.png)
 
 最初の変換を始めましょう。各トラックの1ガロンあたりのマイル数を計算します。 trucksテーブルから始めます。私たちはトラックごとにmileカラムとgasカラムを合計する必要があります。Hiveには、テーブルを再フォーマットするために使用できる一連の関数があります。LATERAL VIEWについては、https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView をご覧ください。stack関数を用いることで、最大54行の、rdate、gas、mileという3つの列（例： 'june13'、june13_miles、june13_gas）にデータを再構成することができます。元のテーブルからtruckid、driverid、rdate、mile、gasを選択し、mpg（マイル/ガス）の計算列を追加します。そして、平均マイル数を計算します。
 
@@ -290,13 +290,13 @@ Ambari Hive User Viewを使って、以下のクエリを実行します。
 CREATE TABLE truck_mileage STORED AS ORC AS SELECT truckid, driverid, rdate, miles, gas, miles / gas mpg FROM trucks LATERAL VIEW stack(54, 'jun13',jun13_miles,jun13_gas,'may13',may13_miles,may13_gas,'apr13',apr13_miles,apr13_gas,'mar13',mar13_miles,mar13_gas,'feb13',feb13_miles,feb13_gas,'jan13',jan13_miles,jan13_gas,'dec12',dec12_miles,dec12_gas,'nov12',nov12_miles,nov12_gas,'oct12',oct12_miles,oct12_gas,'sep12',sep12_miles,sep12_gas,'aug12',aug12_miles,aug12_gas,'jul12',jul12_miles,jul12_gas,'jun12',jun12_miles,jun12_gas,'may12',may12_miles,may12_gas,'apr12',apr12_miles,apr12_gas,'mar12',mar12_miles,mar12_gas,'feb12',feb12_miles,feb12_gas,'jan12',jan12_miles,jan12_gas,'dec11',dec11_miles,dec11_gas,'nov11',nov11_miles,nov11_gas,'oct11',oct11_miles,oct11_gas,'sep11',sep11_miles,sep11_gas,'aug11',aug11_miles,aug11_gas,'jul11',jul11_miles,jul11_gas,'jun11',jun11_miles,jun11_gas,'may11',may11_miles,may11_gas,'apr11',apr11_miles,apr11_gas,'mar11',mar11_miles,mar11_gas,'feb11',feb11_miles,feb11_gas,'jan11',jan11_miles,jan11_gas,'dec10',dec10_miles,dec10_gas,'nov10',nov10_miles,nov10_gas,'oct10',oct10_miles,oct10_gas,'sep10',sep10_miles,sep10_gas,'aug10',aug10_miles,aug10_gas,'jul10',jul10_miles,jul10_gas,'jun10',jun10_miles,jun10_gas,'may10',may10_miles,may10_gas,'apr10',apr10_miles,apr10_gas,'mar10',mar10_miles,mar10_gas,'feb10',feb10_miles,feb10_gas,'jan10',jan10_miles,jan10_gas,'dec09',dec09_miles,dec09_gas,'nov09',nov09_miles,nov09_gas,'oct09',oct09_miles,oct09_gas,'sep09',sep09_miles,sep09_gas,'aug09',aug09_miles,aug09_gas,'jul09',jul09_miles,jul09_gas,'jun09',jun09_miles,jun09_gas,'may09',may09_miles,may09_gas,'apr09',apr09_miles,apr09_gas,'mar09',mar09_miles,mar09_gas,'feb09',feb09_miles,feb09_gas,'jan09',jan09_miles,jan09_gas) dummyalias AS rdate, miles, gas;
 ```
 
-![Truckmileage ](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/create_table_truckmileage_lab2.png)
+![Truckmileage ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/create_table_truckmileage_lab2.png)
 
 ### 2.4.2 Explore a sampling of the data in the truck_mileage table
 
 上記のSQLによって生成されたデータを表示するには、truck_mileageの横にあるDatabase ExplorerでLoad Sample Dataアイコンをクリックします。そうすると、トラックとドライバーが行った各走行記録の一覧が表示されます。
 
-![Select Truckmileage ](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/select_data_truckmileage_lab2.png)
+![Select Truckmileage ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/select_data_truckmileage_lab2.png)
 
 ### 2.4.3 Use the Content Assist to build a query
 
@@ -323,19 +323,19 @@ FROM truck_mileage
 GROUP BY truckid;
 ```
 
-![Create avg mileage table ](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/create_avg_mileage_table_lab2.png)
+![Create avg mileage table ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/create_avg_mileage_table_lab2.png)
 
 ### 2.4.7 Load Sample Data of avg_mileage
 
 上記のSQLによって生成されたデータを表示するには、avg_mileageの横にあるDatabase ExplorerでLoad Sample Dataアイコンをクリックします。
 
-![Load sample avg mileage ](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/load_sample_avg_mileage_lab2.png)
+![Load sample avg mileage ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/load_sample_avg_mileage_lab2.png)
 
 ## STEP 2.5: DEFINE TABLE SCHEMA
 
 これでトラックデータを洗練し、各トラックの平均mpgを得ました（avg_mileageテーブル）。次のタスクは、各ドライバーのリスクファクターを計算することです。これは合計走行マイル数/異常イベント数です。geolocationテーブルからイベント情報を取得できます。
 
-![Geolocation table ](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/geolocation_table_lab3.png)
+![Geolocation table ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/geolocation_table_lab3.png)
 
 truck_mileageテーブルを見ると、driveridと各走行記録のマイル数が表示されます。各ドライバーの合計マイル数を取得するには、それらのレコードをdriveridでグループ化し、マイルを合計します。
 
@@ -352,7 +352,7 @@ FROM truck_mileage
 GROUP BY driverid;
 ```
 
-![Create driver mileage ](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/driver_mileage_table_lab3.png)
+![Create driver mileage ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/driver_mileage_table_lab3.png)
 
 注：このテーブルは、Pig LatinとSparkの両方のジョブにとって必要です。
 
@@ -360,7 +360,7 @@ GROUP BY driverid;
 
 データを表示するには、DriverMileageの横のDatabase ExplorerでLoad sample dataアイコンをクリックします。 結果は次のようになります。
 
-![Create driver mileage ](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/select_data_drivermileage_lab2.png)
+![Create driver mileage ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/select_data_drivermileage_lab2.png)
 
 ### 2.5.3 Explore Hive Data Visualization
 

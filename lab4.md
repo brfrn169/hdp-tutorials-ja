@@ -42,7 +42,7 @@ Apache Sparkは、Scala、Java、Python、およびRのエレガントで表現�
 
 SparkではMapReduce型ジョブやイテレーティブなアルゴリズムなどのバッチアプリケーションを実行できます。インタラクティブなクエリを実行し、アプリケーションでストリーミングデータを処理することもできます。 Sparkには、機械学習アルゴリズム、SQL、ストリーミング、グラフ処理などを簡単に使用できる多数のライブラリも用意されています。Sparkは、Hadoop YARNやApache Mesos上で動作し、独自のスケジューラを使用するスタンドアロンモードでも動作します。Sandboxには、Spark 1.6とSpark 2.0の両方が含まれています。
 
-![Spark](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/Lab4_1.png)
+![Spark](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/Lab4_1.png)
 
 それでは始めましょう！
 
@@ -52,7 +52,7 @@ SparkではMapReduce型ジョブやイテレーティブなアルゴリズムな
 
 注：これらのサービスが無効になっている場合は、これらのサービスを開始してください。
 
-![Ambari](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/ambari_dashboard_lab4.png)
+![Ambari](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/ambari_dashboard_lab4.png)
 
 ### FOR HDP 2.5 SANDBOX USERS ACTIVATE LIVY SERVER
 
@@ -60,15 +60,15 @@ Livy Serverは、最新のSandbox HDP Platformに追加された新機能で、Z
 
 2, Spark Livyサーバーが動作していることを確認します。
 
-![Livy Server](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/verify_spark_livy_server_lab4.png)
+![Livy Server](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/verify_spark_livy_server_lab4.png)
 
 3, ご覧のように、私たちのサーバーはダウンしています。ZeppelinでSparkジョブを実行する前に起動する必要があります。`Livy Server`をクリックし、次に`sandbox.hortonworks.com`をクリックします。ここで`livy server`までスクロールし、`Stopped`ボタンを押してサーバーを起動しましょう。確認ウィンドウの`OK`ボタンを押します。
 
-![Start Livy Server](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/start_livy_server_lab4.png)
+![Start Livy Server](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/start_livy_server_lab4.png)
 
 Livy Serverがスタートしました。
 
-![Started Livy Server](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/livy_server_running_lab4.png)
+![Started Livy Server](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/livy_server_running_lab4.png)
 
 4, Sparkサービスに戻り、Service Actions -> Turn Off Maintenance Modeをクリックします。
 
@@ -78,7 +78,7 @@ Ambariからログアウトします。
 
 Zeppelinのウェルカムページが表示されます。
 
-![Zeppelin](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/zeppelin_welcome_page_lab4.png)
+![Zeppelin](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/zeppelin_welcome_page_lab4.png)
 
 オプションで、Sparkでコードを実行するためにSpark Shellにアクセスする方法を知りたければ、Appendix Aを参照してください。
 
@@ -86,9 +86,9 @@ Zeppelinのウェルカムページが表示されます。
 
 左上のNotebookタブをクリックし、Create new noteを押します。 ノートブックの名前を`Compute Riskfactor with Spark`に設定します。 デフォルトでは、ノートブックはSpark Scala APIをロードします。
 
-![Zeppelin Note book](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/create_new_notebook_hello_hdp_lab4.png)
+![Zeppelin Note book](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/create_new_notebook_hello_hdp_lab4.png)
 
-![Zeppelin create new note](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/notebook_name_hello_hdp_lab4.png)
+![Zeppelin create new note](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/notebook_name_hello_hdp_lab4.png)
 
 ## STEP 4.2: CREATE A HIVECONTEXT
 
@@ -106,7 +106,7 @@ import org.apache.spark.sql.hive.orc._
 import org.apache.spark.sql._
 ```
 
-![Import SQL Libraries](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/import_sql_libraries_hello_hdp_lab4.png)
+![Import SQL Libraries](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/import_sql_libraries_hello_hdp_lab4.png)
 
 ### Instantiate HiveContext
 
@@ -114,7 +114,7 @@ import org.apache.spark.sql._
 %spark
 val hiveContext = new org.apache.spark.sql.hive.HiveContext(sc)
 ```
-![Instantiate HiveContext](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/instantiate_hivecontext_hello_hdp_lab4.png)
+![Instantiate HiveContext](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/instantiate_hivecontext_hello_hdp_lab4.png)
 
 * `sc`はSpark Contextの略です。SparkContextは、すべてのSparkのメインエントリポイントです。これを使用して、クラスタ上でRDDと共有変数を作成できます。Sparkシェルを起動すると、変数`sc`でSparkContextが自動的に初期化されます。
 
@@ -148,7 +148,7 @@ Hiveウェアハウス内のテーブルのリストを表示するには、show
 %spark
 hiveContext.sql("show tables").collect.foreach(println)
 ```
-![Show](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/view_list_tables_hive_hello_hdp_lab4.png)
+![Show](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/view_list_tables_hive_hello_hdp_lab4.png)
 
 注：falseは、列にデータが必要かどうかを示します。
 
@@ -163,14 +163,14 @@ geolocationとDriverMileageテーブルからSpark変数にデータをフェッ
 val geolocation_temp1 = hiveContext.sql("select * from geolocation")
 ```
 
-![Geolocation](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/query_tables_build_spark_rdd_hello_hdp_lab4.png)
+![Geolocation](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/query_tables_build_spark_rdd_hello_hdp_lab4.png)
 
 ```
 %spark
 val drivermileage_temp1 = hiveContext.sql("select * from drivermileage")
 ```
 
-![DriverMileage](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/drivermileage_spark_rdd_hello_hdp_lab4.png)
+![DriverMileage](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/drivermileage_spark_rdd_hello_hdp_lab4.png)
 
 ## 4.4 Querying Against a Table
 
@@ -184,7 +184,7 @@ geolocation_temp1.registerTempTable("geolocation_temp1")
 drivermileage_temp1.registerTempTable("drivermileage_temp1")
 ```
 
-![Temporary](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/name_rdd_hello_hdp_lab4.png)
+![Temporary](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/name_rdd_hello_hdp_lab4.png)
 
 次に、反復とフィルタ操作を実行します。まず、正常ではないイベントを持つドライバをフィルタ処理し、各ドライバの非正常イベントの数をカウントする必要があります。
 
@@ -193,7 +193,7 @@ drivermileage_temp1.registerTempTable("drivermileage_temp1")
 val geolocation_temp2 = hiveContext.sql("SELECT driverid, count(driverid) occurance from geolocation_temp1 where event!='normal' group by driverid")
 ```
 
-![Normal](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/filter_drivers_nonnormal_events_hello_hdp_lab4.png)
+![Normal](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/filter_drivers_nonnormal_events_hello_hdp_lab4.png)
 
 選択(select)操作はRDD変換であるため、何も返されません。
 
@@ -204,7 +204,7 @@ val geolocation_temp2 = hiveContext.sql("SELECT driverid, count(driverid) occura
 geolocation_temp2.registerTempTable("geolocation_temp2")
 ```
 
-![Temporary2](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/register_filtered_table_hello_hdp_lab4.png)
+![Temporary2](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/register_filtered_table_hello_hdp_lab4.png)
 
 RDDでアクション操作を実行すると、結果を表示できます。
 
@@ -213,7 +213,7 @@ RDDでアクション操作を実行すると、結果を表示できます。
 geolocation_temp2.take(10).foreach(println)
 ```
 
-![Results](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/view_results_op_on_rdd_hello_hdp_lab4.png)
+![Results](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/view_results_op_on_rdd_hello_hdp_lab4.png)
 
 ### 4.4.2 Perform join Operation
 
@@ -227,7 +227,7 @@ val joined = hiveContext.sql("select a.driverid,a.occurance,b.totmiles from geol
 
 ```
 
-![Join](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/join_op_column_hello_hdp_lab4.png)
+![Join](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/join_op_column_hello_hdp_lab4.png)
 
 得られたデータセットは、特定のドライバーの合計マイル数と非通常の合計イベントを表示します。 このフィルタリングされたテーブルを一時テーブルとして登録し、後続のSQLクエリをそのテーブルに適用できるようにします。
 
@@ -236,7 +236,7 @@ val joined = hiveContext.sql("select a.driverid,a.occurance,b.totmiles from geol
 joined.registerTempTable("joined")
 ```
 
-![Temporary3](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/register_joined_table_hello_hdp_lab4.png)
+![Temporary3](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/register_joined_table_hello_hdp_lab4.png)
 
 RDDでアクション操作を実行すると、結果を表示できます。
 
@@ -245,7 +245,7 @@ RDDでアクション操作を実行すると、結果を表示できます。
 joined.take(10).foreach(println)
 ```
 
-![Results](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/show_results_joined_table_hello_hdp_lab4.png)
+![Results](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/show_results_joined_table_hello_hdp_lab4.png)
 
 ### 4.4.3 Compute Driver Risk Factor
 
@@ -256,7 +256,7 @@ joined.take(10).foreach(println)
 val risk_factor_spark=hiveContext.sql("select driverid, occurance, totmiles, totmiles/occurance riskfactor from joined")
 ```
 
-![Risk Factor](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/calculate_riskfactor_hello_hdp_lab4.png)
+![Risk Factor](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/calculate_riskfactor_hello_hdp_lab4.png)
 
 ここで得られたデータセットは、合計マイル数と通常ではないイベントの合計と、ドライバーにとってのリスクファクタが含まれています。このフィルタリングされたテーブルを一時テーブルとして登録し、後続のSQLクエリをそのテーブルに適用できるようにします。
 
@@ -272,7 +272,7 @@ RDDでアクション操作を実行すると、結果を表示できます。
 risk_factor_spark.take(10).foreach(println)
 ```
 
-![Results](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/view_results_filtertable_hello_hdp_lab4.png)
+![Results](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/view_results_filtertable_hello_hdp_lab4.png)
 
 ## STEP 4.5: LOAD AND SAVE DATA INTO HIVE AS ORC
 
@@ -290,7 +290,7 @@ hiveContext.sql("create table finalresults( driverid String, occurance bigint,to
 ```
 注：toDF()でDataFrameが作成されます。
 
-![orc](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/create_orc_table_hello_hdp_lab4.png)
+![orc](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/create_orc_table_hello_hdp_lab4.png)
 
 ### 4.5.2 Convert data into ORC table
 
@@ -311,7 +311,7 @@ Spark 1.3.1の場合は、以下を実行します。
 risk_factor_spark.saveAsOrcFile("risk_factor_spark")
 ```
 
-![convert orc](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/convert_orc_table_hello_hdp_lab4.png)
+![convert orc](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/convert_orc_table_hello_hdp_lab4.png)
 
 ### 4.5.3 Load the data into Hive table using load data command
 
@@ -320,7 +320,7 @@ risk_factor_spark.saveAsOrcFile("risk_factor_spark")
 hiveContext.sql("load data inpath 'risk_factor_spark' into table finalresults")
 ```
 
-![load data to finalresults](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/load_data_to_finalresults_hello_hdp_lab4.png)
+![load data to finalresults](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/load_data_to_finalresults_hello_hdp_lab4.png)
 
 ### 4.5.4 Create the final table Riskfactor using CTAS
 
@@ -329,14 +329,14 @@ hiveContext.sql("load data inpath 'risk_factor_spark' into table finalresults")
 hiveContext.sql("create table riskfactor as select * from finalresults")
 ```
 
-![create table riskfactor](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/create_table_riskfactor_spark.png)
+![create table riskfactor](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/create_table_riskfactor_spark.png)
 
 
 ### 4.5.5 Verify Data Successfully Populated Hive Table in Hive (Check 2)
 
 selectクエリを実行して、テーブルが正常に格納されたことを確認します。 Ambari Hive User Viewで、作成したHiveテーブルにデータが格納されているかどうかを確認できます。
 
-![verify](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/riskfactor_table_populated.png)
+![verify](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/riskfactor_table_populated.png)
 
 ## FULL SPARK CODE REVIEW FOR LAB
 

@@ -39,34 +39,34 @@
 ## STEP 1.2: LOAD THE SENSOR DATA INTO HDFS
 
 1. Ambariのダッシュボードに移動し、HDFS File Viewを開きます。ユーザー名ボタンの横にある9つの四角のボタンをクリックし、Files Viewを選択します。
-![Files  View](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/files_view_lab1.png)
+![Files  View](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/files_view_lab1.png)
 
 2. HDFSファイルシステムの一番上のルートから始まり、ログインしているユーザー（この場合はmaria_dev）がアクセス権を持っているすべてのファイルが表示されます。
-![Files  View](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/root_files_view_folder_lab1.png)
+![Files  View](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/root_files_view_folder_lab1.png)
 
 3. `/user/maria_dev`のディレクトリリンクをクリックして移動します。
 
-4. 今回のユースケースで使用するデータをアップロードするためのデータディレクトリを作成しましょう。 ![New Folder](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/new_folder_icon_lab1.png)ボタンをクリックして、`maria_dev`ディレクトリ内にデータディレクトリを作成します。そして、`data`ディレクトリに移動します。
-![Add New Folder](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/add_new_folder_data_lab1.png)
+4. 今回のユースケースで使用するデータをアップロードするためのデータディレクトリを作成しましょう。 ![New Folder](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/new_folder_icon_lab1.png)ボタンをクリックして、`maria_dev`ディレクトリ内にデータディレクトリを作成します。そして、`data`ディレクトリに移動します。
+![Add New Folder](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/add_new_folder_data_lab1.png)
 
 ### 1.2.1 UPLOAD GEOLOCATION AND TRUCKS CSV FILES TO DATA FOLDER
 
-5. 新しく作成したディレクトリパス`/user/maria_dev/data`にまだ移動していない場合は、そのフォルダに移動します。次に、![Upload](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/upload_icon_lab1.png)ボタンをクリックして、geolocation.csvとtrucks.csvをアップロードします。
+5. 新しく作成したディレクトリパス`/user/maria_dev/data`にまだ移動していない場合は、そのフォルダに移動します。次に、![Upload](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/upload_icon_lab1.png)ボタンをクリックして、geolocation.csvとtrucks.csvをアップロードします。
 
 6. ファイルのアップロードウィンドウが表示され、雲の画像をクリックします。
-![Upload file ](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/upload_file_lab1.png)
+![Upload file ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/upload_file_lab1.png)
 
 7. 別のウィンドウが表示され流ので、2つのcsvファイルをダウンロードしたディレクトリに移動します。1回に1つのファイルを選択し、Openを押してアップロードを完了します。両方のファイルがアップロードされるまで、このプロセスを繰り返します。
-![File Navigator ](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/upload_file_window_lab1.png)
+![File Navigator ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/upload_file_window_lab1.png)
 両方のファイルがHDFSにアップロードされ、Files ViewのUIに表示されます。
-![File Views ](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/uploaded_files_lab1.png)
+![File Views ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/uploaded_files_lab1.png)
 ここでファイルやフォルダに対して、次の操作を実行することもできます： 開く、名前変更、権限変更、削除、コピー、移動、ダウンロード、ファイル連結
 
 ### 1.2.2 SET WRITE PERMISSIONS TO WRITE TO DATA FOLDER
 
 8. ディレクトリパス`/user/maria_dev`に含まれている`data`フォルダをクリックします。[Permissions]をクリックします。下記の画像のように、すべてのWriteボックスがチェックされていることを確認してください（背景が青色になる）。
 
-![File Views ](https://raw.githubusercontent.com/hortonworks/tutorials/hdp-2.5/assets/hello-hdp/edit_permissions_lab1.png)
+![File Views ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/edit_permissions_lab1.png)
 
 ## SUMMARY
 
