@@ -1,5 +1,5 @@
 
-[LAB 2 - HIVE AND DATA ETL](http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/#section_4)の翻訳です。
+[LAB 2 - HIVE AND DATA ETL](https://github.com/hortonworks/data-tutorials/blob/master/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/tutorial-3.md)の翻訳です。
 
 # LAB 2 - HIVE AND DATA ETL
 
@@ -187,17 +187,7 @@ Resultsタブの一番下までスクロールすると、Storage Informationと
 
 ![Rename Worksheet ](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/save_truck_sample_data_lab2.png)
 
-### 2.2.9 Command Line Approach: Populate Hive Table with Data
-
-次のHiveコマンドを使用して、コマンドラインから既存のテーブルにデータをロードすることができます。
-
-```
-LOAD DATA INPATH '/user/maria_dev/data/trucks.csv' OVERWRITE INTO TABLE trucks;
-```
-
-上記のコマンドを実行し、`/user/maria_dev/data`フォルダに移動したら、あなたは、フォルダが空であることに気付くでしょう！ `LOAD DATA INPATH`コマンドは、`trucks.csv`ファイルを`/user/maria_dev/data`フォルダから`/apps /hive/warehouse/trucks_stage`フォルダに移動させたのです。
-
-### 2.2.10 Beeline – Command Shell
+### 2.2.9 Beeline – Command Shell
 
 ここまで出てきたようなSQLをコマンドラインから実行したい場合は、Beeline Shellを使用できます。BeelineはJDBC接続を使用してHiveServer2に接続します。以下の手順をシェル（またはWindowsを使用している場合はputty）から実行します。
 

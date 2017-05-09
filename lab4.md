@@ -1,5 +1,5 @@
 
-[LAB 4 - Spark Risk Factor Analysis](http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/#section_6)の翻訳です。
+[LAB 4 - Spark Risk Factor Analysis](https://github.com/hortonworks/data-tutorials/blob/master/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/tutorial-5.md)の翻訳です。
 
 # LAB 4 - SPARK RISK FACTOR ANALYSIS
 
@@ -62,7 +62,7 @@ Livy Serverは、最新のSandbox HDP Platformに追加された新機能で、Z
 
 ![Livy Server](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/verify_spark_livy_server_lab4.png)
 
-3, ご覧のように、私たちのサーバーはダウンしています。ZeppelinでSparkジョブを実行する前に起動する必要があります。`Livy Server`をクリックし、次に`sandbox.hortonworks.com`をクリックします。ここで`livy server`までスクロールし、`Stopped`ボタンを押してサーバーを起動しましょう。確認ウィンドウの`OK`ボタンを押します。
+3, ご覧のように、私たちのサーバーはダウンしています。ZeppelinでSparkジョブを実行する前に起動する必要があります。`Livy Server`をクリックし、次に`sandbox.hortonworks.com`(または、サーバIPアドレス)をクリックします。ここで`livy server`までスクロールし、`Stopped`ボタンを押してサーバーを起動しましょう。確認ウィンドウの`OK`ボタンを押します。
 
 ![Start Livy Server](https://raw.githubusercontent.com/hortonworks/data-tutorials/3b77c994580ba8cdb78a2dfdde76bd0e1a90e546/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/assets/start_livy_server_lab4.png)
 
@@ -74,7 +74,7 @@ Livy Serverがスタートしました。
 
 Ambariからログアウトします。
 
-5, `sandbox.hortonworks.com:9995`でZeppelinにアクセスしてください
+5, `sandbox.hortonworks.com:9995`(または、`<サーバIPアドレス>:9995`)でZeppelinにアクセスしてください
 
 Zeppelinのウェルカムページが表示されます。
 
@@ -129,7 +129,7 @@ RDDを作成する方法は3つあります。
 * データセットを参照してRDDを作成します。 このデータセットは、HDFS、Cassandra、HBaseなどのHadoopでサポートされているすべてのストレージソースから取得できます。
 * 既存のRDDを変換して新しいRDDを作成してRDDを作成します。
 
-チュートリアルの後半の2つの方法を使用します。
+チュートリアルは後半の2つの方法を使用します。
 
 ### RDD Transformations and Actions
 
@@ -340,11 +340,82 @@ selectクエリを実行して、テーブルが正常に格納されたこと�
 
 ## FULL SPARK CODE REVIEW FOR LAB
 
-...省略...
+hiveやsqlのライブラリをインポートします。
 
-## APPENDIX A: RUN SPARK CODE IN THE SPARK INTERACTIVE SHELL
+```
+%spark
+import org.apache.spark.sql.hive.orc._
+import org.apache.spark.sql._
 
-...省略...
+val hiveContext = new org.apache.spark.sql.hive.HiveContext(sc)
+```
+
+defaultデータベースのテーブルを表示します。
+
+```
+hiveContext.sql("show tables").collect.foreach(println)
+```
+
+すべてのレコードとカラムをテーブルからselectして、RDD(テンポラリのテーブル)として登録します。
+
+```
+val geolocation_temp1 = hiveContext.sql("select * from geolocation")
+
+val drivermileage_temp1 = hiveContext.sql("select * from drivermileage")
+
+geolocation_temp1.registerTempTable("geolocation_temp1")
+drivermileage_temp1.registerTempTable("drivermileage_temp1")
+
+val geolocation_temp2 = hiveContext.sql("SELECT driverid, count(driverid) occurance from geolocation_temp1  where event!='normal' group by driverid")
+
+geolocation_temp2.registerTempTable("geolocation_temp2")
+```
+
+最初の10レコードをgeolocation_temp2から取り出し表示します。
+
+```
+geolocation_temp2.take(10).foreach(println)
+```
+
+2つのテーブル(geolocation_temp2とdrivermileage_temp1)をdriveridでjoin、RDD(テンポラリのテーブル)として登録します。
+
+```
+val joined = hiveContext.sql("select a.driverid,a.occurance,b.totmiles from geolocation_temp2 a,drivermileage_temp1 b where a.driverid=b.driverid")
+
+joined.registerTempTable("joined")
+```
+
+joinしたテーブル(joined)の最初の10レコードを表示します。
+
+```
+joined.take(10).foreach(println)
+```
+
+risk_factor_sparkテーブルを初期化してRDD(テンポラリのテーブル)として登録します。
+
+```
+val risk_factor_spark=hiveContext.sql("select driverid, occurance, totmiles, totmiles/occurance riskfactor from joined")
+
+risk_factor_spark.registerTempTable("risk_factor_spark")
+```
+
+risk_factor_sparkテーブルの最初の10レコードを表示します。
+
+```
+risk_factor_spark.take(10).foreach(println)
+```
+
+Hive上にfinalresultsテーブルを作成し、そこにORCとしてデータをロードします。そして、CTASを使ってriskfactorテーブルを作成します。
+
+```
+hiveContext.sql("create table finalresults( driverid String, occurance bigint, totmiles bigint, riskfactor double) stored as orc").toDF()
+
+risk_factor_spark.write.format("orc").save("risk_factor_spark")
+
+hiveContext.sql("load data inpath 'risk_factor_spark' into table finalresults")
+
+hiveContext.sql("create table riskfactor as select * from finalresults")
+```
 
 ## SUMMARY
 
@@ -361,3 +432,7 @@ selectクエリを実行して、テーブルが正常に格納されたこと�
 * [Advanced Analytics with Spark](https://www.amazon.com/dp/1491912766)
 * [HDP DEVELOPER: APACHE SPARK USING SCALA](http://hortonworks.com/training/class/hdp-developer-apache-spark-using-scala/)
 * [HDP DEVELOPER: APACHE SPARK USING PYTHON](http://hortonworks.com/training/class/hdp-developer-apache-spark-using-python/)
+
+## APPENDIX A: RUN SPARK CODE IN THE SPARK INTERACTIVE SHELL
+
+...省略...

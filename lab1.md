@@ -1,5 +1,5 @@
 
-[LAB 1 - LOADING SENSOR DATA INTO HDFS](http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/#section_3)の翻訳です。
+[LAB 1 - LOADING SENSOR DATA INTO HDFS](https://github.com/hortonworks/data-tutorials/blob/master/tutorials/hdp/hdp-2.5/hadoop-tutorial-getting-started-with-hdp/tutorial-2.md)の翻訳です。
 
 # LAB 1 - LOADING SENSOR DATA INTO HDFS
 
